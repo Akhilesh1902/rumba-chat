@@ -1,0 +1,61 @@
+@import url("./home.css");
+/* @import url("./room.css"); */
+@import url("./style.css");
+@import url("./room2.css");
+
+a {
+  text-decoration: none;
+  transition: transform 200ms ease-in-out;
+}
+a span {
+  color: black;
+}
+
+button {
+  border: none;
+}
+
+a:hover,
+button:hover {
+  color: initial;
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+  transition: transform 200ms ease-in-out;
+}
+
+.modal-overlay {
+  position: absolute;
+  background-color: rgba(35, 35, 39, 0.712);
+  width: 100vw;
+  height: 100vh;
+  margin: none;
+  margin-top: -6.5vh;
+  display: grid;
+  place-items: center;
+}
+
+.join-room-modal {
+  background-color: white;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border-radius: 1em;
+}
+.join-room-modal-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+.join-room-modal-form div > input {
+  padding: 0.5em;
+}
+
+.home-hero {
+  overflow: hidden;
+  z-index: 0;
+}
