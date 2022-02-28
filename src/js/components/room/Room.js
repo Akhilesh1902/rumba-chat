@@ -6,12 +6,6 @@ import { mediaContext } from "../../App";
 /**
  * agora stuff
  */
-let channel;
-
-export async function createChannel(rtmClient, uid) {
-  channel = await rtmClient.createChannel(uid);
-  await channel.join();
-}
 
 /**
  * react stuff

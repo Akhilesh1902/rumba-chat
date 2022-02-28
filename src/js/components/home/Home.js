@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import JoinRoomModel from "./JoinRoomModel";
 
-// const joinRoomClick = () => {
-//   console.log("join room clicked");
-//   return <JoinRoomModel />;
-// };
-
 function Home() {
   const [showModal, setshowModal] = useState(false);
   const [modalProps, setmodalProps] = useState({});

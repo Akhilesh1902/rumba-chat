@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Buttons from "./utils/Buttons";
 
-function Navbar({ loc, mobile }) {
-  const [mobileMenu, setmobileMenu] = useState(false);
-
+function Navbar({ loc }) {
   console.log(loc);
   let tohome = false;
   if (loc === "home") {

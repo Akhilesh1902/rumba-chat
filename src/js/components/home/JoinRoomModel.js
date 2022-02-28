@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function JoinRoomModel({ first, second, head }) {
   let double = second ? true : false;

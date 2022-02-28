@@ -59,8 +59,6 @@ function RightSection() {
             />
           );
         })}
-        {/* <MessageBlock status="out-going" textValue="test" id="00001" />
-        <MessageBlock status="in-comming" textValue="test" id="020202" /> */}
       </div>
       <div className="room-message-form-container">
         <form onSubmit={sendClick} className="form room-message-form">
