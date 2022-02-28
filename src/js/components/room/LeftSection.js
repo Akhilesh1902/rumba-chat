@@ -9,7 +9,7 @@ function LeftSection() {
       <div className="room-contact-list">
         <div className="room-contact">
           <img
-            alt="profile image for contact icon"
+            alt="contact profile icon"
             src="https://play.teleporthq.io/static/svg/default-img.svg"
             className="room-image"
           />
