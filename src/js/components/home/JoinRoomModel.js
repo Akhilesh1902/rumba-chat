@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function JoinRoomModel({ first, second, head, socket }) {
+function JoinRoomModel({ first, second, head }) {
   let double = second ? true : false;
   let [firstInput, setfirstInput] = useState("");
   let [secondInput, setsecondInput] = useState("");

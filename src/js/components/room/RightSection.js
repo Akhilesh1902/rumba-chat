@@ -20,7 +20,7 @@ function RightSection({ socket, roomId, userName }) {
       });
       setmessages([...temp]);
     });
-  }, []);
+  });
 
   useEffect(() => {
     const element = document.querySelector(".room-message-container");
@@ -34,11 +34,7 @@ function RightSection({ socket, roomId, userName }) {
     e.preventDefault();
     if (/^\s*$/.test(textValue)) return;
 
-    // const status = ["in-comming", "out-going"];
-    // const rand = Math.floor(Math.random() + 0.5);
-    // let key = Math.floor(Date.now() * Math.random());
     socket.emit("chat", textValue);
-    // setmessages([...messages, { status: status[rand], textValue, key }]);
     settextValue("");
   };
 
@@ -62,7 +58,6 @@ function RightSection({ socket, roomId, userName }) {
             );
           }
         })}
-        {/* <div ref={messageEndRef} /> */}
       </div>
       <div className="room-message-form-container">
         <form onSubmit={sendClick} className="form room-message-form">
