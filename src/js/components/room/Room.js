@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 
 function Room({ socket }) {
-  // console.log(match);
-  // console.log(useParams());
   let { id, name } = useParams();
-  // let loc = useLocation();
 
   console.log(name);
   console.log(id);
