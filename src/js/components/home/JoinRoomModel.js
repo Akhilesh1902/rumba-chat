@@ -1,44 +1,85 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-function JoinRoomModel({ first, second, head }) {
+function JoinRoomModel({ first, second, head, socket }) {
   let double = second ? true : false;
+  let [firstInput, setfirstInput] = useState("");
+  let [secondInput, setsecondInput] = useState("");
+  const [roomPath, setRoomPath] = useState("");
 
-  console.log(first, second);
   return (
     <div className="join-room-modal">
       <h1>{head}</h1>
-      <form className="join-room-modal-form">
+      <div className="join-room-modal-form">
         <div>
-          <div>
-            <label htmlFor="joining-use-name">
-              <h5>{first}</h5>
-            </label>
-            <input
-              id="joining-user-name"
-              type="text"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-          {double && (
+          {!double && (
             <div>
               <label htmlFor="joining-use-name">
-                <h5>{second}</h5>
+                <h5>{first}</h5>
               </label>
               <input
+                value={firstInput}
                 id="joining-user-name"
                 type="text"
-                placeholder="Enter room ID"
+                placeholder="Enter your name"
                 required
+                onChange={(e) => {
+                  setfirstInput(e.target.value);
+                  setRoomPath(
+                    e.target.value + Math.floor(Math.random() * 100001)
+                  );
+                }}
               />
             </div>
           )}
 
-          <button type="submit" className="button primary ">
-            Submit
-          </button>
+          {double && (
+            <>
+              <div>
+                <label htmlFor="joining-use-name">
+                  <h5>{first}</h5>
+                </label>
+                <input
+                  value={firstInput}
+                  id="joining-user-name"
+                  type="text"
+                  placeholder="Enter your name"
+                  required
+                  onChange={(e) => {
+                    setfirstInput(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="joining-use-name">
+                  <h5>{second}</h5>
+                </label>
+                <input
+                  value={secondInput}
+                  id="joining-user-name"
+                  type="text"
+                  placeholder="Enter room ID"
+                  required
+                  onChange={(e) => {
+                    setsecondInput(e.target.value);
+                    setRoomPath(e.target.value);
+                  }}
+                />
+              </div>
+            </>
+          )}
+          <Link
+            to={{
+              pathname: `/room/${roomPath}/${firstInput}`,
+              state: { name: "hii" },
+            }}
+          >
+            <button type="submit" className="button primary ">
+              Submit
+            </button>
+          </Link>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

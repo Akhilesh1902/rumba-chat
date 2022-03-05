@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import JoinRoomModel from "./JoinRoomModel";
 
-function Home() {
+function Home({ socket }) {
   const [showModal, setshowModal] = useState(false);
   const [modalProps, setmodalProps] = useState({});
 
@@ -18,12 +18,10 @@ function Home() {
       props.head = "Host a Room";
     }
     setmodalProps(props);
-    console.log("inside the functoion :" + modalProps);
   };
-  console.log("outside the function : " + modalProps);
   return (
     <>
-      <Navbar loc="home" />
+      <Navbar loc="home" handleButtonClick={handleButtonClick} />
       <div className="home-hero">
         <span className="home-text2">
           <span className="home-text3">Getting people together</span>
@@ -50,11 +48,13 @@ function Home() {
           </button>
         </div>
         {showModal && (
-          <div className="modal-overlay" onClick={handleButtonClick}>
+          <div className="overlay-container">
+            <div className="modal-overlay" onClick={handleButtonClick}></div>
             <JoinRoomModel
               first={modalProps.first}
               second={modalProps.second}
               head={modalProps.head}
+              socket={socket}
             />
           </div>
         )}

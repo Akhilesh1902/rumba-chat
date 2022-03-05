@@ -1,8 +1,7 @@
 import React from "react";
-import Buttons from "./utils/Buttons";
+import { Link } from "react-router-dom";
 
-function Navbar({ loc }) {
-  console.log(loc);
+function Navbar({ loc, handleButtonClick, socket }) {
   let tohome = false;
   if (loc === "home") {
     loc = "room";
@@ -28,20 +27,39 @@ function Navbar({ loc }) {
 
   return (
     <header data-role="Header" className="home-header">
-      <a href="home">
+      <Link to={"/home"}>
         <h1>
           <span>Rumba-Chat</span>
         </h1>
-      </a>
+      </Link>
       <div className="home-btn-group">
         {tohome ? (
-          <>
-            <Buttons href={loc} state="danger" content="Exit-room" />
-          </>
+          <Link to={"/home"}>
+            <p
+              className="home-navlink button danger"
+              onClick={() => {
+                socket.disconnect();
+              }}
+            >
+              Exit-room
+            </p>
+          </Link>
         ) : (
           <>
-            <Buttons href={loc} state="primary" content="Join-room" />
-            <Buttons href={loc} state="secondary" content="Create-room" />
+            <button
+              className="home-navlink4 button primary"
+              onClick={handleButtonClick}
+              id="join-button"
+            >
+              Join-room
+            </button>
+            <button
+              className="home-navlink5 button secondary"
+              onClick={handleButtonClick}
+              id="create-button"
+            >
+              Create-room
+            </button>
           </>
         )}
       </div>
@@ -69,12 +87,26 @@ function Navbar({ loc }) {
             <div className="home-btn-group1">
               {tohome ? (
                 <>
-                  <Buttons href={loc} state="danger" content="Exit-room" />
+                  <Link to={"/home"}>
+                    <p className="home-navlink button danger">Exit-room</p>
+                  </Link>
                 </>
               ) : (
                 <>
-                  <Buttons href={loc} state="primary" content="Join-room" />
-                  <Buttons href={loc} state="secondary" content="Create-room" />
+                  <button
+                    className="home-navlink4 button primary"
+                    onClick={handleButtonClick}
+                    id="join-button"
+                  >
+                    Join-room
+                  </button>
+                  <button
+                    className="home-navlink5 button secondary"
+                    onClick={handleButtonClick}
+                    id="create-button"
+                  >
+                    Create-room
+                  </button>
                 </>
               )}
             </div>

@@ -1,40 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "../css/app.css";
 
 import Home from "./components/home/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Room from "./components/room/Room";
+import { io } from "socket.io-client";
+
+/**
+ * Agora Stuff
+ */
 
 /**
  * react stuff
  */
-export const mediaContext = React.createContext();
-console.log(mediaContext);
+const socket = io.connect("http://localhost:4000");
 
 function App() {
-  const [mobile, setmobile] = useState(
-    window.matchMedia("(max-width:780px)").matches
-  );
-  useEffect(() => {
-    window
-      .matchMedia("(max-width:780px)")
-      .addEventListener("change", (e) => setmobile(e.matches));
-  }, []);
-  console.log("is mobile : " + mobile);
-
-  document.querySelector("html");
-
   return (
     <>
-      <mediaContext.Provider value={mobile}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/room" element={<Room />} />
-          </Routes>
-        </BrowserRouter>
-      </mediaContext.Provider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home socket={socket} />} />
+        {/* <Route path="/room" element={<Room roomid={roomId} />} /> */}
+        {/* <Route path={roomPath} element={<Room roomid={roomId} />} /> */}
+        <Route
+          path={`/room/:id/:name`}
+          state={`hi`}
+          element={<Room socket={socket} />}
+        />
+      </Routes>
     </>
   );
 }

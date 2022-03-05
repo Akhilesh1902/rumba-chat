@@ -22,6 +22,15 @@ button:hover {
   color: rgb(255, 255, 255);
   transition: transform 200ms ease-in-out;
 }
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
 
 .modal-overlay {
   position: absolute;
@@ -35,6 +44,10 @@ button:hover {
 }
 
 .join-room-modal {
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(50%, 50%); */
   background-color: white;
   padding: 2em;
   display: flex;
@@ -43,6 +56,7 @@ button:hover {
   align-items: center;
   gap: 1em;
   border-radius: 1em;
+  z-index: 1;
 }
 .join-room-modal-form div {
   display: flex;
