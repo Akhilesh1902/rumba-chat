@@ -13,7 +13,7 @@ import { io } from "socket.io-client";
 /**
  * react stuff
  */
-const socket = io.connect("https://rumba-server-node.herokuapp.com/");
+const socket = io.connect("https://rumba-chat-server.herokuapp.com/");
 
 function App() {
   return (
