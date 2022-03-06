@@ -20,7 +20,7 @@ function RightSection({ socket, roomId, userName }) {
       });
       setmessages([...temp]);
     });
-  });
+  }, []);
 
   useEffect(() => {
     const element = document.querySelector(".room-message-container");
