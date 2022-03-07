@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ loc, handleButtonClick, socket }) {
+function Navbar({ loc, handleButtonClick, socket, roomId }) {
   let tohome = false;
   if (loc === "home") {
     loc = "room";
@@ -34,16 +34,21 @@ function Navbar({ loc, handleButtonClick, socket }) {
       </Link>
       <div className="home-btn-group">
         {tohome ? (
-          <Link to={"/home"}>
-            <p
-              className="home-navlink button danger"
-              onClick={() => {
-                socket.disconnect();
-              }}
-            >
-              Exit-room
+          <>
+            <p className="room__roomId">
+              RoomId : <span>{roomId}</span>
             </p>
-          </Link>
+            <Link to={"/home"}>
+              <p
+                className="home-navlink button danger"
+                onClick={() => {
+                  socket.disconnect();
+                }}
+              >
+                Exit-room
+              </p>
+            </Link>
+          </>
         ) : (
           <>
             <button
@@ -86,11 +91,14 @@ function Navbar({ loc, handleButtonClick, socket }) {
             </div>
             <div className="home-btn-group1">
               {tohome ? (
-                <>
+                <div className="mobile__room__exit">
+                  <p className="room__roomId">
+                    RoomId : <span>{roomId}</span>
+                  </p>
                   <Link to={"/home"}>
                     <p className="home-navlink button danger">Exit-room</p>
                   </Link>
-                </>
+                </div>
               ) : (
                 <>
                   <button

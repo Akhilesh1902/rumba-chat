@@ -14,6 +14,7 @@ import { io } from "socket.io-client";
  * react stuff
  */
 const socket = io.connect("https://rumba-chat-server.herokuapp.com/");
+// const socket = io.connect("http://localhost:4000");
 
 function App() {
   return (

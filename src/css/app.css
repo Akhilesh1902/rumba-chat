@@ -73,3 +73,10 @@ button:hover {
   overflow: hidden;
   z-index: 0;
 }
+.home-btn-group {
+  justify-content: center;
+  align-items: center;
+}
+.home-btn-group > a > p {
+  margin: 0;
+}

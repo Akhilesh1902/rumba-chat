@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const messageArr = [];
 
 function RightSection({ socket, roomId, userName }) {
   let [textValue, settextValue] = useState("");
   let [messages, setmessages] = useState(messageArr);
+  const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
     socket.emit("join_user", { userName, roomId });
     socket.on("message", ({ text, userId, userName }) => {
-      console.log(userId);
-      console.log(userName);
-      console.log(text);
       let temp = messages;
       temp.push({
         userId,
@@ -20,24 +18,24 @@ function RightSection({ socket, roomId, userName }) {
       });
       setmessages([...temp]);
     });
-  }, []);
-
-  useEffect(() => {
-    const element = document.querySelector(".room-message-container");
-    element.scrollTo({
-      top: element.scrollHeight - element.clientHeight,
-      behavior: "smooth",
-    });
-  }, [textValue]);
+  }, [socket]);
 
   const sendClick = (e) => {
     e.preventDefault();
     if (/^\s*$/.test(textValue)) return;
+    setScroll(!scroll);
 
     socket.emit("chat", textValue);
     settextValue("");
   };
 
+  const messageEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
   return (
     <div className="right-section">
       <div className="room-message-container">
@@ -58,6 +56,7 @@ function RightSection({ socket, roomId, userName }) {
             );
           }
         })}
+        <div ref={messageEndRef}></div>
       </div>
       <div className="room-message-form-container">
         <form onSubmit={sendClick} className="form room-message-form">

@@ -7,13 +7,11 @@ import RightSection from "./RightSection";
 function Room({ socket }) {
   let { id, name } = useParams();
 
-  console.log(name);
-  console.log(id);
   return (
     <>
-      <Navbar loc="room" socket={socket} />
+      <Navbar loc="room" socket={socket} roomId={id} />
       <div className="room-container">
-        <LeftSection />
+        <LeftSection userName={name} />
 
         <RightSection socket={socket} roomId={id} userName={name} />
       </div>

@@ -39,12 +39,15 @@ img {
   text-overflow: ellipsis;
 }
 .right-section {
-  width: max-content;
+  width: 100%;
+  /* width: max-content; */
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-image: url("https://images.unsplash.com/photo-1619441207978-3d326c46e2c9?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fG5hdHVyZSUyMGJhY2tncm91bmR8ZW58MHx8fHwxNjQ1Nzc5NzQ0&ixlib=rb-1.2.1&w=1500");
+  background-image: url("https://source.unsplash.com/random/?nature,forest,city");
+  background-color: rgba(24, 23, 23, 0.705);
+  background-blend-mode: overlay;
   background-size: cover;
   z-index: -2;
   background-position: center;
@@ -58,9 +61,34 @@ img {
   /* flex-direction: column; */
   /* justify-content: flex-end; */
   overflow-y: scroll;
-  overflow-x: visible;
+  overflow-x: hidden;
   position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(151, 151, 151, 0.35) rgb(151, 151, 151);
 }
+.room-message-container span {
+  font-weight: 400;
+  opacity: 0.6;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+.room-message-container p {
+  margin: 0;
+}
+
+.room-message-container::-webkit-scrollbar {
+  width: 0.5em; /* width of the entire scrollbar */
+}
+
+.room-message-container::-webkit-scrollbar-track {
+  background: rgba(151, 151, 151, 0.35);
+}
+
+.room-message-container::-webkit-scrollbar-thumb {
+  background-color: rgb(151, 151, 151);
+  border-radius: 0.5rem;
+}
+
 .room-message-block {
   width: 70%;
   margin: 0.5em;
@@ -72,14 +100,14 @@ img {
 }
 
 .in-comming {
-  background-color: rgb(99, 136, 53);
+  background-color: rgb(84, 136, 170);
 
   align-self: flex-start;
   margin-left: 1%;
 }
 
 .out-going {
-  background-color: rgb(131, 173, 80);
+  background-color: rgb(84, 136, 173);
 
   align-self: flex-end;
   margin-left: 28%;
@@ -88,6 +116,49 @@ img {
 .room-message-form {
   display: flex;
   justify-content: flex-end;
+}
+.room-contactDetails {
+  width: 90%;
+  background-color: rgba(138, 137, 153, 0.672);
+  margin: 0;
+  border-radius: 0.2em;
+}
+.room-text07 {
+  font-weight: 400;
+  font-size: 2em;
+  margin-left: 0.5em;
+}
+
+.room__roomId {
+  margin: 0;
+  font-size: 2rem;
+  margin-inline: 1em;
+  font-weight: 600;
+}
+.room__roomId span {
+  font-weight: 400;
+  font-size: 0.8em;
+  background: rgba(175, 171, 184, 0.597);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+}
+
+.mobile__room__exit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* justify-content: start; */
+}
+.mobile__room__exit .room__roomId {
+  font-size: 1.5rem;
+}
+.mobile__room__exit a {
+  margin-left: 1em;
+  margin-top: 0.8em;
+}
+.mobile__room__exit a p {
+  margin: 0;
 }
 
 @media screen and (max-width: 700px) {
